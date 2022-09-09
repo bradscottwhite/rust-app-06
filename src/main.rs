@@ -16,11 +16,12 @@ impl Person {
         &self.first_name
     }*/
 
-    pub fn set_first_name(&mut self) -> &mut String {
-        &mut self.first_name
+    
+    pub fn set_first_name(&mut self, first_name: String) {
+        *&mut self.first_name = first_name
     }
-    pub fn set_last_name(&mut self) -> &mut String {
-        &mut self.last_name
+    pub fn set_last_name(&mut self, last_name: String) {
+        *&mut self.last_name = last_name
     }
 
     pub fn greet(&self) {
@@ -47,10 +48,10 @@ impl People {
     }
 
     pub fn set_first_name(&mut self, index: usize, first_name: String) {
-        *self.people[index].set_first_name() = first_name
+        self.people[index].set_first_name(first_name)
     }
     pub fn set_last_name(&mut self, index: usize, last_name: String) {
-        *self.people[index].set_last_name() = last_name
+        self.people[index].set_last_name(last_name)
     }
 
     pub fn greet(&self) {
@@ -69,8 +70,8 @@ fn main() {
     };
     me.greet();
 
-    *me.set_first_name() = String::from("Carter");
-    *me.set_last_name() = String::from("Wilkes");
+    me.set_first_name(String::from("Carter"));
+    me.set_last_name(String::from("Wilkes"));
     me.greet();
 
     /* Testing People: */
